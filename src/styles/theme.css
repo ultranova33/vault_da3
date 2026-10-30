@@ -1,0 +1,121 @@
+/* ===================================================================
+   TYPOGRAPHY + POSTER LAYER (palette stays: void / acid / chrome / ember).
+   Anybody        -> headings, wordmark, numerals (variable width via font-stretch)
+   Climate Crisis -> melting accent words (variable YEAR axis)
+   Kode Mono      -> everything technical
+   =================================================================== */
+:root {
+  --f-disp: var(--font-disp), "Arial Narrow", Impact, sans-serif;
+  --f-melt: var(--font-melt), var(--font-disp), Impact, sans-serif;
+  --f-mono: var(--font-mono), ui-monospace, Menlo, Consolas, monospace;
+  --f-px: var(--f-disp);
+  --f-serif: var(--f-melt);
+}
+body { font-family: var(--f-mono); font-size: 13px; line-height: 1.6; }
+
+/* wordmarks and headings: expanded, heavy, tight */
+.page-title, .gw-title, .gw-h2, .ab-h, .grant-title, .modal-card h2, .cta strong, .mode strong,
+.band strong, .ab-lvl strong, .scn-name, .verdict, .big-ok, .big-bad, .headline, .marquee-track,
+.flow-card h3, .ab-item dt, .nav-brand, .gw-pitch, .ab-big {
+  font-family: var(--f-disp);
+  font-weight: 900;
+  font-stretch: 125%;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+.page-title { font-size: clamp(2.4rem, 8.4vw, 7.2rem); line-height: .88; font-stretch: 150%; }
+.risk .page-title { font-size: clamp(2.2rem, 7.4vw, 6rem); }
+.gw-title { font-size: clamp(3.4rem, 11.4vw, 11.5rem); line-height: .86; font-stretch: 150%; letter-spacing: -.045em; }
+.gw-a { color: var(--chrome); text-shadow: 5px 5px 0 var(--ember); }
+.gw-b {
+  font-family: var(--f-melt); font-weight: 400; font-stretch: 100%; letter-spacing: -.04em; line-height: .9;
+  color: transparent; -webkit-text-stroke: clamp(1.5px, .3vw, 3px) var(--acid); font-variation-settings: "YEAR" 2050; width: fit-content;
+}
+.gw-h2 { font-size: clamp(1.3rem, 2.8vw, 2.2rem); line-height: 1.02; }
+.ab-h { font-size: clamp(1.3rem, 2.8vw, 2.1rem); line-height: 1; }
+.cta strong { font-size: clamp(1.05rem, 1.9vw, 1.5rem); line-height: 1.05; }
+.band strong { font-size: clamp(1.5rem, 3vw, 2.4rem); }
+.ab-lvl strong { font-size: clamp(1.4rem, 2.8vw, 2.1rem); }
+.scn-name { font-size: clamp(1rem, 2.1vw, 1.5rem); }
+.mode strong { font-size: 1.05rem; line-height: 1.1; }
+.flow-card h3, .ab-item dt { font-size: .95rem; line-height: 1.1; font-stretch: 110%; }
+.modal-card h2 { font-size: 1.6rem; }
+.verdict { font-size: clamp(1.3rem, 3vw, 2.1rem); }
+.grant-title { font-size: clamp(1.8rem, 6vw, 4rem); font-stretch: 150%; }
+.big-ok, .big-bad { font-size: clamp(1.8rem, 5vw, 3.2rem); }
+.headline { font-size: .85rem; letter-spacing: 0; font-stretch: 110%; }
+.marquee-track { font-size: clamp(1rem, 2vw, 1.5rem); font-stretch: 130%; }
+.nav-brand { font-size: 18px; font-stretch: 140%; letter-spacing: -.03em; }
+.outline { -webkit-text-stroke-width: 1.5px; }
+
+/* statement lines */
+.gw-pitch { font-size: clamp(1.4rem, 3.2vw, 2.6rem); line-height: 1.02; max-width: 17ch; font-weight: 800; font-stretch: 100%; text-transform: none; letter-spacing: -.035em; }
+.ab-big { font-size: clamp(1.5rem, 3.4vw, 2.8rem); line-height: 1.04; max-width: 22ch; font-weight: 800; font-stretch: 100%; text-transform: none; letter-spacing: -.035em; }
+
+/* melting accent words */
+.frag {
+  font-family: var(--f-melt); font-style: normal; font-weight: 400; text-transform: none; letter-spacing: -.02em;
+  color: var(--acid); transform: none; font-size: .74em; line-height: 1; font-variation-settings: "YEAR" 2035; display: inline-block;
+}
+.gw-pitch .frag, .ab-big .frag { font-size: .8em; }
+.gw-h2 .frag { color: var(--ember); }
+@media (prefers-reduced-motion: no-preference) {
+  .gw-b { animation: melt 7s ease-in-out infinite alternate; }
+  .frag { transition: font-variation-settings .6s ease; }
+  .frag:hover { font-variation-settings: "YEAR" 2050; filter: none; }
+}
+@keyframes melt { from { font-variation-settings: "YEAR" 1979; } to { font-variation-settings: "YEAR" 2050; } }
+
+/* numerals: condensed heavy */
+.panel-idx, .rail b, .stage-n, .scn-code, .gauge-read strong, .stepup-code, .cta small, .mode small, .ab-int b,
+.flow-n, .ab-no, .gw-pain b, .cta i {
+  font-family: var(--f-disp); font-weight: 900; font-stretch: 62%; letter-spacing: 0;
+}
+.gauge-read strong { font-size: 4.6rem; line-height: .85; }
+.ab-no { font-size: clamp(3rem, 8vw, 7rem); }
+.stepup-code { font-size: 3.2rem; letter-spacing: .06em; }
+.gw-pain b { font-size: 1.4rem; font-stretch: 85%; }
+.term-body { font-size: 11.5px; }
+.kv code { font-size: 12px; }
+.sig-row { font-size: 11.5px; }
+
+/* terminal columns sized for the mono face */
+.term-line { grid-template-columns: max-content 11ch 1fr; gap: 10px; }
+.term-line time { white-space: nowrap; }
+@media (max-width: 560px) { .term-line { grid-template-columns: 1fr; } }
+
+/* ===================== GATEWAY POSTER (dark, on-palette) ===================== */
+.gw-hero {
+  position: relative; padding: clamp(14px, 2vw, 26px); border: 2px solid var(--chrome);
+  background: color-mix(in srgb, var(--void) 70%, transparent); overflow: hidden; isolation: isolate;
+}
+.gw-cells { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); z-index: -1; pointer-events: none; }
+.gw-cells span { border: 0 solid color-mix(in srgb, var(--chrome) 22%, transparent); border-width: 0 1px 1px 0; padding: 8px 10px; font: 400 clamp(11px, 1.2vw, 16px) var(--f-mono); color: var(--dim); }
+.gw-cells span:nth-child(3n) { border-right: 0; }
+.gw-cells span:nth-child(n+7) { border-bottom: 0; }
+.gw-orbits { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.gw-orbits ellipse { fill: none; stroke: color-mix(in srgb, var(--acid) 45%, transparent); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.gw-strip { grid-template-columns: auto 1fr; }
+.gw-star { position: relative; width: 44%; filter: drop-shadow(6px 6px 0 var(--void)); }
+.gw-corner.tr { color: var(--ember); border-color: var(--ember); }
+.callout {
+  position: absolute; z-index: 3; font: 400 10px/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--acid); background: var(--void); border: 1px solid var(--acid); padding: 4px 7px;
+}
+.callout::after { content: ""; position: absolute; width: 1px; background: var(--acid); left: 10px; top: 100%; height: var(--lead, 40px); }
+.callout.c1 { left: 6%; top: 22%; --lead: 56px; }
+.callout.c2 { right: 6%; top: 34%; --lead: 70px; }
+.callout.c3 { left: 14%; bottom: 20%; --lead: 0px; }
+.callout.c3::after { display: none; }
+@media (max-width: 900px) { .callout { display: none; } }
+
+.ab-hero .iris { position: absolute; right: 2%; top: 0; width: min(34vw, 340px); filter: drop-shadow(6px 6px 0 var(--ember)); z-index: 0; }
+@media (prefers-reduced-motion: no-preference) { .iris { animation: spin 40s linear infinite; } .gw-star { animation: spin 30s linear infinite; } }
+
+/* how-it-works: what is simulated */
+.ab-sim { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 2px solid var(--ember); }
+.ab-sim li { padding: 12px 14px; border-right: 2px solid var(--ember); font-size: 12px; }
+.ab-sim li:last-child { border-right: 0; }
+.ab-sim b { display: block; color: var(--ember); letter-spacing: .12em; }
+@media (max-width: 760px) { .ab-sim { grid-template-columns: 1fr; } .ab-sim li { border-right: 0; border-bottom: 2px solid var(--ember); } }
+@media (max-width: 700px) { .ab-hero .iris { display: none; } }
